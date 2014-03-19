@@ -17,13 +17,21 @@ purposes.
 Install strace if you need a tool to track the system calls made and
 received by a process.
 
+%package graph
+Summary:   Create a graph from strace output
+BuildArch: noarch
+Requires:  strace = %{version}
+
+%description graph
+%{summary}.
+
 %prep
 %setup -q -n %{name}-%{version}/%{name}
 
 %build
 
 %reconfigure --disable-static
-make %{?jobs:-j%jobs}
+make %{_smp_mflags}
 
 %install
 rm -rf %{buildroot}
@@ -32,7 +40,10 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc COPYRIGHT ChangeLog README CREDITS PORTING NEWS
 %{_bindir}/strace
-%{_bindir}/strace-graph
+%{_bindir}/strace-log-merge
 %{_mandir}/man1/*
+
+%files graph
+%defattr(-,root,root,-)
+%{_bindir}/strace-graph
