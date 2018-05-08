@@ -1,11 +1,11 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    4.8
+Version:    4.22
 Release:    1
 Group:      Development/Debuggers
 License:    BSD
-URL:        http://sourceforge.net/projects/strace/
-Source0:    http://dl.sourceforge.net/strace/%{name}-%{version}.tar.xz
+URL:        https://strace.io
+Source0:    %{name}-%{version}.tar.xz
 
 %description
 The strace program intercepts and records the system calls called and
@@ -30,6 +30,7 @@ Requires:  strace = %{version}
 
 %build
 
+sh bootstrap
 %reconfigure --disable-static
 make %{_smp_mflags}
 
