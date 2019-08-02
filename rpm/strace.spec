@@ -1,9 +1,9 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    4.22
+Version:    5.2
 Release:    1
 Group:      Development/Debuggers
-License:    BSD
+License:    LGPLv2+
 URL:        https://strace.io
 Source0:    %{name}-%{version}.tar.xz
 
@@ -20,10 +20,18 @@ received by a process.
 %package graph
 Summary:   Create a graph from strace output
 BuildArch: noarch
-Requires:  strace = %{version}
+Requires:  %{name} = %{version}-%{release}
 
 %description graph
 %{summary}.
+
+%package doc
+Summary:   Documentation for %{name}
+Group:     Documentation
+Requires:  %{name} = %{version}-%{release}
+
+%description doc
+Man pages for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}/%{name}
@@ -39,12 +47,21 @@ rm -rf %{buildroot}
 
 %make_install
 
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
+	install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
+	        AUTHORS ChangeLog-CVS NEWS README
+
 %files
 %defattr(-,root,root,-)
+%license COPYING
 %{_bindir}/strace
 %{_bindir}/strace-log-merge
-%{_mandir}/man1/*
 
 %files graph
 %defattr(-,root,root,-)
 %{_bindir}/strace-graph
+
+%files doc
+%defattr(-,root,root,-)
+%{_mandir}/man*/*
+%{_docdir}/%{name}-%{version}
