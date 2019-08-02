@@ -1,9 +1,9 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    4.22
+Version:    5.2
 Release:    1
 Group:      Development/Debuggers
-License:    BSD
+License:    LGPLv2+
 URL:        https://strace.io
 Source0:    %{name}-%{version}.tar.xz
 
