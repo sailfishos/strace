@@ -1,6 +1,6 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    5.2
+Version:    5.7
 Release:    1
 Group:      Development/Debuggers
 License:    LGPLv2+
