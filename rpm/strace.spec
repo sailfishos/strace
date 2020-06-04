@@ -1,8 +1,7 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    5.2
+Version:    5.7
 Release:    1
-Group:      Development/Debuggers
 License:    LGPLv2+
 URL:        https://strace.io
 Source0:    %{name}-%{version}.tar.xz
@@ -27,7 +26,6 @@ Requires:  %{name} = %{version}-%{release}
 
 %package doc
 Summary:   Documentation for %{name}
-Group:     Documentation
 Requires:  %{name} = %{version}-%{release}
 
 %description doc
@@ -39,7 +37,7 @@ Man pages for %{name}.
 %build
 
 sh bootstrap
-%reconfigure --disable-static
+%reconfigure --enable-mpers=check
 make %{_smp_mflags}
 
 %install
