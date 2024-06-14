@@ -1,6 +1,6 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    5.7
+Version:    6.9
 Release:    1
 License:    LGPLv2+
 URL:        https://strace.io
@@ -16,33 +16,23 @@ purposes.
 Install strace if you need a tool to track the system calls made and
 received by a process.
 
-%package graph
-Summary:   Create a graph from strace output
-BuildArch: noarch
-Requires:  %{name} = %{version}-%{release}
-
-%description graph
-%{summary}.
-
 %package doc
 Summary:   Documentation for %{name}
 Requires:  %{name} = %{version}-%{release}
 
 %description doc
-Man pages for %{name}.
+Documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
+%autosetup -n %{name}-%{version}/%{name}
 
 %build
 
 sh bootstrap
 %reconfigure --enable-mpers=check
-make %{_smp_mflags}
+%make_build
 
 %install
-rm -rf %{buildroot}
-
 %make_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
@@ -50,16 +40,10 @@ mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
 	        AUTHORS ChangeLog-CVS NEWS README
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/strace
 %{_bindir}/strace-log-merge
 
-%files graph
-%defattr(-,root,root,-)
-%{_bindir}/strace-graph
-
 %files doc
-%defattr(-,root,root,-)
 %{_mandir}/man*/*
 %{_docdir}/%{name}-%{version}
