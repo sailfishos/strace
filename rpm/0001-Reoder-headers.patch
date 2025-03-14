@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matti=20Lehtim=C3=A4ki?= <matti.lehtimaki@jolla.com>
+Date: Fri, 14 Mar 2025 15:46:00 +0200
+Subject: [PATCH] Reoder headers
+
+---
+ src/sched.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sched.c b/src/sched.c
+index b1b99dd6d..55687145e 100644
+--- a/src/sched.c
++++ b/src/sched.c
+@@ -10,8 +10,8 @@
+ 
+ #include "defs.h"
+ 
+-#include <sched.h>
+ #include <linux/sched/types.h>
++#include <sched.h>
+ 
+ #include "xlat/schedulers.h"
+ #include "xlat/sched_flags.h"
