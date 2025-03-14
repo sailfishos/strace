@@ -1,10 +1,11 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    6.9
+Version:    6.13
 Release:    1
 License:    LGPLv2+
 URL:        https://strace.io
 Source0:    %{name}-%{version}.tar.xz
+Patch1:     0001-Reoder-headers.patch
 
 %description
 The strace program intercepts and records the system calls called and
@@ -24,7 +25,7 @@ Requires:  %{name} = %{version}-%{release}
 Documentation for %{name}.
 
 %prep
-%autosetup -n %{name}-%{version}/%{name}
+%autosetup -p1 -n %{name}-%{version}/%{name}
 
 %build
 
