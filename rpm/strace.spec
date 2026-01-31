@@ -1,11 +1,10 @@
 Name:       strace
 Summary:    Tracks and displays system calls associated with a running process
-Version:    6.13
+Version:    6.18
 Release:    1
 License:    LGPLv2+
-URL:        https://strace.io
+URL:        https://github.com/sailfishos/strace
 Source0:    %{name}-%{version}.tar.xz
-Patch1:     0001-Reoder-headers.patch
 
 %description
 The strace program intercepts and records the system calls called and
